@@ -158,3 +158,36 @@ footer {
     width: 95%;
   }
 }
+
+.cart {
+  background-color: #fff;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cart h2 {
+  margin-bottom: 1rem;
+  color: #27ae60;
+  text-align: center;
+}
+
+.cart ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart li {
+  background-color: #ecf0f1;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+#empty-cart {
+  color: #999;
+  text-align: center;
+}
