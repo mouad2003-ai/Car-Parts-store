@@ -6,7 +6,7 @@
   <title>🛠️ متجر قطع غيار السيارات - Car Parts Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* إعدادات عامة */
+    /* التنسيقات كما في السابق */
     body {
       font-family: 'Cairo', sans-serif;
       margin: 0; padding: 0;
@@ -22,7 +22,6 @@
       font-size: 1.2rem;
       user-select: none;
     }
-    /* الهيدر */
     header {
       display: flex;
       justify-content: space-between;
@@ -61,7 +60,6 @@
     nav a:hover {
       color: #f4a261;
     }
-    /* البانر */
     .banner {
       background: url('images/banner.jpg') no-repeat center center/cover;
       height: 180px;
@@ -74,7 +72,6 @@
       text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
       margin-bottom: 2rem;
     }
-    /* منتجات */
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -144,7 +141,6 @@
     .add-to-cart:hover {
       background-color: #21867a;
     }
-    /* التسجيل و تسجيل الدخول */
     section.signup, section.login {
       max-width: 400px;
       background-color: white;
@@ -187,12 +183,10 @@
     form button:hover {
       background-color: #21867a;
     }
-    /* الفوتر */
     footer {
       font-size: 0.9rem;
       user-select: none;
     }
-    /* استجابة الموبايل */
     @media (max-width: 768px) {
       .products {
         flex-direction: column;
@@ -216,7 +210,7 @@
 
   <header>
     <div class="logo">🛠️ قطع غيار السيارات</div>
-    <div class="lang-switch">
+    <div class="lang-switch" title="تغيير اللغة / Change Language">
       <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')" />
       <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')" />
     </div>
@@ -230,9 +224,11 @@
 
   <div class="banner">مرحباً بكم في متجر قطع الغيار</div>
 
-  <section class="products">
-    <!-- منتج 1: وسادة فرامل -->
-    <div class="product">
+  <section class="products" id="products">
+    <div class="product" data-ar-title="وسادة فرامل" data-fr-title="Plaquette de frein"
+         data-ar-desc="وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال. مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية."
+         data-fr-desc="Les plaquettes de frein assurent un freinage puissant et silencieux. Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable."
+         data-price="150">
       <img src="images/brake.jpg" alt="وسادة فرامل" />
       <div class="product-content">
         <h3>وسادة فرامل / Plaquette de frein</h3>
@@ -247,17 +243,18 @@
       </div>
     </div>
 
-    <!-- منتج 2: فلتر زيت -->
-    <div class="product">
+    <div class="product" data-ar-title="فلتر زيت" data-fr-title="Filtre à huile"
+         data-ar-desc="فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل. يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت."
+         data-fr-desc="Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés, aidant à préserver le moteur plus longtemps et en réduisant l'usure. Facile à installer, durable et assure un flux d’huile stable."
+         data-price="95">
       <img src="images/oil.jpg" alt="فلتر زيت" />
       <div class="product-content">
         <h3>فلتر زيت / Filtre à huile</h3>
         <p>
-          فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب،
-          مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل.
+          فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل.
           يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت.<br />
-          Le filtre à huile de haute qualité purifie l’huile des impuretés et dépôts,
-          prolongeant la durée de vie du moteur tout en réduisant l’usure.
+          Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés,
+          aidant à préserver le moteur plus longtemps et en réduisant l'usure.
           Facile à installer, durable et assure un flux d’huile stable.
         </p>
         <div class="price">95 درهم</div>
@@ -289,5 +286,33 @@
     جميع الحقوق محفوظة &copy; 2025 متجر قطع غيار السيارات
   </footer>
 
+  <script>
+    // لا يتم التبديل إلا إذا ضغط المستخدم على العلم
+    function setLang(lang) {
+      if (lang === 'ar') {
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+
+        // تحديث محتوى المنتجات للعربية
+        document.querySelectorAll('.product').forEach(prod => {
+          prod.querySelector('h3').textContent = prod.dataset.arTitle + ' / ' + prod.dataset.frTitle;
+          prod.querySelector('p').innerHTML = prod.dataset.arDesc.replace(/\n/g, '<br>') + '<br>' + prod.dataset.frDesc;
+          prod.querySelector('.price').textContent = prod.dataset.price + ' درهم';
+          prod.querySelector('.add-to-cart').textContent = '🛒 أضف إلى العربة';
+        });
+      } else if (lang === 'fr') {
+        document.documentElement.lang = 'fr';
+        document.documentElement.dir = 'ltr';
+
+        // تحديث محتوى المنتجات للفرنسية
+        document.querySelectorAll('.product').forEach(prod => {
+          prod.querySelector('h3').textContent = prod.dataset.frTitle + ' / ' + prod.dataset.arTitle;
+          prod.querySelector('p').innerHTML = prod.dataset.frDesc.replace(/\n/g, '<br>') + '<br>' + prod.dataset.arDesc;
+          prod.querySelector('.price').textContent = prod.dataset.price + ' Dhs';
+          prod.querySelector('.add-to-cart').textContent = '🛒 Ajouter au panier';
+        });
+      }
+    }
+  </script>
 </body>
 </html>
