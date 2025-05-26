@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قطع غيار السيارات - Car Parts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🛠️ قطع غيار السيارات</div>
+    <div class="lang-switch">
+      <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')">
+      <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')">
+    </div>
+  </header>
+
+  <nav>
+    <a href="#">الرئيسية / Accueil</a>
+    <a href="#signup">تسجيل / S'inscrire</a>
+    <a href="#login">دخول / Connexion</a>
+  </nav>
+
+  <div class="banner">مرحباً بكم في متجر قطع الغيار</div>
+
+  <section class="products">
+    <div class="product">
+      <img src="images/brake.jpg" alt="Brake Pad">
+      <h3>وسادة فرامل / Plaquette de frein</h3>
+    </div>
+    <div class="product">
+      <img src="images/oil.jpg" alt="Oil Filter">
+      <h3>فلتر زيت / Filtre à huile</h3>
+    </div>
+  </section>
+
+  <section class="signup" id="signup">
+    <h2>إنشاء حساب / Créer un compte</h2>
+    <form>
+      <input type="text" placeholder="الاسم الكامل / Nom complet" required>
+      <input type="email" placeholder="البريد الإلكتروني / Email" required>
+      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
+      <button type="submit">تسجيل / S'inscrire</button>
+    </form>
+  </section>
+
+  <section class="login" id="login">
+    <h2>تسجيل الدخول / Connexion</h2>
+    <form>
+      <input type="email" placeholder="البريد الإلكتروني / Email" required>
+      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
+      <button type="submit">دخول / Connexion</button>
+    </form>
+  </section>
+
+  <footer>جميع الحقوق محفوظة &copy; 2025</footer>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    }
+  </script>
+</body>
+</html>
