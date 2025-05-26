@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تفاصيل المنتج</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-detail {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+    }
+    .product-detail img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .product-detail h1 {
+      margin-top: 20px;
+    }
+    .product-detail p {
+      margin: 10px 0;
+    }
+    .price {
+      font-size: 1.5em;
+      color: #e63946;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-detail">
+    <img id="product-image" src="images/brake.jpg" alt="صورة المنتج">
+    <h1 id="product-name">وسادة فرامل</h1>
+    <p id="product-description">وسادة فرامل عالية الجودة تناسب معظم السيارات الأوروبية. توفر أداءً ممتازًا للفرملة.</p>
+    <p class="price" id="product-price">السعر: 150 درهم</p>
+    <button class="btn" onclick="addToCart()">🛒 أضف إلى العربة</button>
+  </div>
+
+  <script>
+    // يمكنك تمرير بيانات من الصفحة الرئيسية لاحقًا
+    function addToCart() {
+      alert("تمت إضافة المنتج إلى العربة!");
+    }
+  </script>
+
+</body>
+</html>
 
