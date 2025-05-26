@@ -3,180 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>قطع غيار السيارات - Car Parts</title>
+  <title>تفاصيل المنتج - قطع غيار السيارات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #1d3557;
-      --secondary-color: #457b9d;
-      --accent-color: #a8dadc;
-      --text-color: #333;
-      --bg-color: #f9f9f9;
-      --danger-color: #e63946;
-      --success-color: #2a9d8f;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f9f9f9;
       margin: 0;
       padding: 0;
     }
-
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+    header, footer {
+      background-color: #1d3557;
+      color: white;
+      text-align: center;
+      padding: 1rem;
     }
-
-    header {
-      background-color: var(--primary-color);
-      color: #fff;
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .product-detail {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
       flex-wrap: wrap;
+      gap: 2rem;
     }
-
-    .logo {
+    .product-detail img {
+      max-width: 100%;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .info {
+      flex: 1;
+    }
+    .info h1 {
+      margin-bottom: 1rem;
       font-size: 1.8rem;
     }
-
-    .lang-switch img {
-      width: 30px;
-      margin-left: 10px;
-      cursor: pointer;
+    .info p {
+      margin-bottom: 1rem;
+      color: #444;
     }
-
-    nav {
-      background-color: var(--secondary-color);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0.75rem;
-      flex-wrap: wrap;
+    .price {
+      font-size: 1.5rem;
+      color: #2a9d8f;
     }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .banner {
-      background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
-      text-align: center;
-      padding: 2rem;
-      font-size: 1.3rem;
-      color: #fff;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-
-    .product {
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      width: 270px;
-      transition: transform 0.3s ease;
-      text-align: center;
-      position: relative;
-    }
-
-    .product:hover {
-      transform: scale(1.05);
-    }
-
-    .product img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product h3 {
-      padding: 1rem;
-      font-size: 1.1rem;
-    }
-
     .add-to-cart {
-      background: var(--success-color);
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #2a9d8f;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      margin-bottom: 1rem;
       border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s;
     }
-
     .add-to-cart:hover {
       background: #21867a;
     }
-
-    section.signup, section.login {
-      background-color: #fff;
-      margin: 2rem;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-
-    section h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      max-width: 400px;
-      margin: auto;
-    }
-
-    input, button {
-      padding: 0.75rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      background-color: var(--primary-color);
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: var(--secondary-color);
-    }
-
-    footer {
-      background-color: var(--primary-color);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .products {
+    @media (max-width: 600px) {
+      .product-detail {
         flex-direction: column;
         align-items: center;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 10px;
       }
     }
   </style>
@@ -184,68 +74,49 @@
 <body>
 
   <header>
-    <div class="logo">🛠️ قطع غيار السيارات</div>
-    <div class="lang-switch">
-      <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')">
-      <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')">
-    </div>
+    🛠️ قطع غيار السيارات
   </header>
 
-  <nav>
-    <a href="#">الرئيسية / Accueil</a>
-    <a href="#signup">تسجيل / S'inscrire</a>
-    <a href="#login">دخول / Connexion</a>
-  </nav>
-
-  <div class="banner">مرحباً بكم في متجر قطع الغيار</div>
-
-  <section class="products">
-    <div class="product">
-      <a href="product.html?id=brake">
-        <img src="images/brake.jpg" alt="وسادة فرامل">
-        <h3>وسادة فرامل / Plaquette de frein</h3>
-      </a>
-      <button class="add-to-cart">🛒 أضف إلى العربة</button>
+  <div class="container">
+    <div class="product-detail">
+      <img src="images/brake.jpg" alt="وسادة فرامل">
+      <div class="info">
+        <h1>وسادة فرامل / Plaquette de frein</h1>
+        <p>
+          وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال.
+          مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية.
+          <br>
+          Les plaquettes de frein assurent un freinage puissant et silencieux. Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable.
+        </p>
+        <div class="price">150 درهم</div>
+        <button class="add-to-cart">🛒 أضف إلى العربة</button>
+      </div>
     </div>
+  </div>
 
-    <div class="product">
-      <a href="product.html?id=oil">
-        <img src="images/oil.jpg" alt="فلتر زيت">
-        <h3>فلتر زيت / Filtre à huile</h3>
-      </a>
-      <button class="add-to-cart">🛒 أضف إلى العربة</button>
+  <div class="container">
+    <div class="product-detail">
+      <img src="images/oil.jpg" alt="فلتر زيت">
+      <div class="info">
+        <h1>فلتر زيت / Filtre à huile</h1>
+        <p>
+          فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب،
+          مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل.
+          يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت.
+          <br>
+          Le filtre à huile de haute qualité purifie l’huile des impuretés et dépôts,
+          prolongeant la durée de vie du moteur tout en réduisant l’usure.
+          Facile à installer, durable et assure un flux d’huile stable.
+        </p>
+        <div class="price">95 درهم</div>
+        <button class="add-to-cart">🛒 أضف إلى العربة</button>
+      </div>
     </div>
-  </section>
-
-  <section class="signup" id="signup">
-    <h2>إنشاء حساب / Créer un compte</h2>
-    <form>
-      <input type="text" placeholder="الاسم الكامل / Nom complet" required>
-      <input type="email" placeholder="البريد الإلكتروني / Email" required>
-      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
-      <button type="submit">تسجيل / S'inscrire</button>
-    </form>
-  </section>
-
-  <section class="login" id="login">
-    <h2>تسجيل الدخول / Connexion</h2>
-    <form>
-      <input type="email" placeholder="البريد الإلكتروني / Email" required>
-      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
-      <button type="submit">دخول / Connexion</button>
-    </form>
-  </section>
+  </div>
 
   <footer>
     جميع الحقوق محفوظة &copy; 2025
   </footer>
-
-  <script>
-    function setLang(lang) {
-      document.documentElement.lang = lang;
-      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-    }
-  </script>
 
 </body>
 </html>
