@@ -1,0 +1,170 @@
+import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Search } from "lucide-react";
+
+const translations = {
+  ar: {
+    title: "مرحبًا بك في متجر قطع الغيار",
+    year: "السنة",
+    make: "الشركة",
+    model: "الطراز",
+    search: "ابحث عن القطع"
+  },
+  fr: {
+    title: "Bienvenue dans la boutique de pièces",
+    year: "Année",
+    make: "Marque",
+    model: "Modèle",
+    search: "Rechercher des pièces"
+  },
+  en: {
+    title: "Welcome to the Parts Store",
+    year: "Year",
+    make: "Make",
+    model: "Model",
+    search: "Search Parts"
+  }
+};
+
+const currentYear = new Date().getFullYear();
+const years = Array.from({ length: currentYear - 1999 }, (_, i) => currentYear - i);
+
+const makes = [
+  "Toyota", "Honda", "Ford", "Chevrolet", "Nissan", "BMW", "Mercedes-Benz", "Volkswagen",
+  "Hyundai", "Kia", "Mazda", "Subaru", "Audi", "Lexus", "Jeep", "Dodge", "GMC", "Ram",
+  "Chrysler", "Buick", "Cadillac", "Acura", "Infiniti", "Mitsubishi", "Volvo", "Mini", "Porsche"
+];
+
+const models = {
+  Toyota: ["Corolla", "Camry", "RAV4"],
+  Honda: ["Civic", "Accord", "CR-V"],
+  Ford: ["Focus", "Fusion", "Escape"],
+  Chevrolet: ["Malibu", "Impala", "Equinox"],
+  Nissan: ["Altima", "Sentra", "Rogue"],
+  BMW: ["3 Series", "5 Series", "X5"],
+  "Mercedes-Benz": ["C-Class", "E-Class", "GLC"],
+  Volkswagen: ["Golf", "Passat", "Tiguan"],
+  Hyundai: ["Elantra", "Sonata", "Tucson"],
+  Kia: ["Rio", "Sportage", "Sorento"],
+  Mazda: ["Mazda3", "Mazda6", "CX-5"],
+  Subaru: ["Impreza", "Outback", "Forester"],
+  Audi: ["A3", "A4", "Q5"],
+  Lexus: ["IS", "ES", "RX"],
+  Jeep: ["Wrangler", "Cherokee", "Grand Cherokee"],
+  Dodge: ["Charger", "Challenger", "Durango"],
+  GMC: ["Sierra", "Terrain", "Acadia"],
+  Ram: ["1500", "2500"],
+  Chrysler: ["300", "Pacifica"],
+  Buick: ["Encore", "Enclave"],
+  Cadillac: ["CTS", "Escalade"],
+  Acura: ["ILX", "RDX"],
+  Infiniti: ["Q50", "QX60"],
+  Mitsubishi: ["Lancer", "Outlander"],
+  Volvo: ["S60", "XC60"],
+  Mini: ["Cooper", "Countryman"],
+  Porsche: ["911", "Cayenne"]
+};
+
+export default function HomePage() {
+  const [selectedCar, setSelectedCar] = useState({ year: "", make: "", model: "" });
+  const [language, setLanguage] = useState("ar");
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem("language");
+    const storedCar = localStorage.getItem("selectedCar");
+    if (storedLang) setLanguage(storedLang);
+    if (storedCar) setSelectedCar(JSON.parse(storedCar));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("language", language);
+  }, [language]);
+
+  useEffect(() => {
+    localStorage.setItem("selectedCar", JSON.stringify(selectedCar));
+  }, [selectedCar]);
+
+  const t = translations[language];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSelectedCar((prev) => ({
+      ...prev,
+      [name]: value,
+      ...(name === "make" ? { model: "" } : {})
+    }));
+  };
+
+  const handleSearch = () => {
+    console.log("السيارة المختارة:", selectedCar);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex justify-end mb-4">
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="p-2 rounded border"
+          >
+            <option value="ar">العربية</option>
+            <option value="fr">Français</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+
+        <h1 className="text-4xl font-bold mb-6 text-center">{t.title}</h1>
+
+        {/* زر البحث في الأعلى */}
+        <div className="mb-6 flex justify-center">
+          <Button onClick={handleSearch} className="flex items-center gap-2 px-6 py-3">
+            <Search className="w-5 h-5" /> {t.search}
+          </Button>
+        </div>
+
+        <Card className="mb-6">
+          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+            <select
+              name="year"
+              value={selectedCar.year}
+              onChange={handleChange}
+              className="p-2 rounded border"
+            >
+              <option value="" disabled>{t.year}</option>
+              {years.map((year) => (
+                <option key={year} value={year}>{year}</option>
+              ))}
+            </select>
+
+            <select
+              name="make"
+              value={selectedCar.make}
+              onChange={handleChange}
+              className="p-2 rounded border"
+            >
+              <option value="" disabled>{t.make}</option>
+              {makes.map((make) => (
+                <option key={make} value={make}>{make}</option>
+              ))}
+            </select>
+
+            <select
+              name="model"
+              value={selectedCar.model}
+              onChange={handleChange}
+              className="p-2 rounded border"
+              disabled={!selectedCar.make}
+            >
+              <option value="" disabled>{t.model}</option>
+              {(models[selectedCar.make] || []).map((model) => (
+                <option key={model} value={model}>{model}</option>
+              ))}
+            </select>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
