@@ -10,40 +10,49 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f9f9f9;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
       background-color: #1d3557;
       color: white;
+      padding: 10px 20px;
     }
+
     .logo {
       font-size: 1.5em;
     }
+
     .lang-switch img {
       width: 30px;
       margin-left: 10px;
       cursor: pointer;
     }
+
     nav {
       display: flex;
       justify-content: center;
-      gap: 15px;
       background-color: #457b9d;
       padding: 10px;
+      gap: 15px;
     }
+
     nav a {
       color: white;
       text-decoration: none;
+      font-weight: bold;
     }
+
     .banner {
       background-color: #a8dadc;
       text-align: center;
       padding: 20px;
       font-size: 1.2em;
     }
+
     .products {
       display: flex;
       flex-wrap: wrap;
@@ -51,33 +60,70 @@
       gap: 20px;
       padding: 20px;
     }
+
     .product {
-      border: 1px solid #ccc;
+      background: white;
+      border: 1px solid #ddd;
       border-radius: 10px;
-      padding: 15px;
       width: 250px;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
     .product img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 10px 10px 0 0;
     }
-    .signup, .login {
-      padding: 20px;
+
+    .product h3 {
+      padding: 10px;
+      font-size: 1.1em;
+    }
+
+    section.signup,
+    section.login {
       background-color: #f1f1f1;
       margin: 20px;
+      padding: 20px;
       border-radius: 10px;
     }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
     form {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 400px;
+      margin: auto;
     }
+
     input, button {
       padding: 10px;
       font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
+
+    button {
+      background-color: #1d3557;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #457b9d;
+    }
+
     footer {
       background-color: #1d3557;
       color: white;
@@ -85,12 +131,12 @@
       padding: 10px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .products {
         flex-direction: column;
         align-items: center;
       }
+
       nav {
         flex-direction: column;
       }
@@ -122,6 +168,7 @@
         <h3>وسادة فرامل / Plaquette de frein</h3>
       </a>
     </div>
+
     <div class="product">
       <a href="product.html?id=oil">
         <img src="images/oil.jpg" alt="فلتر زيت">
@@ -149,12 +196,14 @@
     </form>
   </section>
 
-  <footer>جميع الحقوق محفوظة &copy; 2025</footer>
+  <footer>
+    جميع الحقوق محفوظة &copy; 2025
+  </footer>
 
   <script>
     function setLang(lang) {
       document.documentElement.lang = lang;
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     }
   </script>
 
