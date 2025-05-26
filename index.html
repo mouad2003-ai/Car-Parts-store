@@ -5,126 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>قطع غيار السيارات - Car Parts</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1d3557;
+      color: white;
+    }
+    .logo {
+      font-size: 1.5em;
+    }
+    .lang-switch img {
+      width: 30px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background-color: #457b9d;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    .banner {
+      background-color: #a8dadc;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2em;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .signup, .login {
+      padding: 20px;
+      background-color: #f1f1f1;
+      margin: 20px;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+    }
+    footer {
+      background-color: #1d3557;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ✅ رأس الصفحة -->
   <header>
     <div class="logo">🛠️ قطع غيار السيارات</div>
     <div class="lang-switch">
-      <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')" />
-      <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')" />
+      <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')">
+      <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')">
     </div>
   </header>
 
-  <!-- ✅ قائمة التنقل -->
   <nav>
     <a href="#">الرئيسية / Accueil</a>
     <a href="#signup">تسجيل / S'inscrire</a>
     <a href="#login">دخول / Connexion</a>
   </nav>
 
-  <main>
-    <!-- ✅ بانر ترحيبي -->
-    <section class="banner">
-      <h1>مرحباً بكم في متجر قطع الغيار</h1>
-    </section>
+  <div class="banner">مرحباً بكم في متجر قطع الغيار</div>
 
-    <!-- ✅ قسم المنتجات -->
-    <section class="products">
-      <div class="product">
-        <img src="images/brake.jpg" alt="Brake Pad" />
+  <section class="products">
+    <div class="product">
+      <a href="product.html?id=brake">
+        <img src="images/brake.jpg" alt="وسادة فرامل">
         <h3>وسادة فرامل / Plaquette de frein</h3>
-        <button onclick="addToCart('وسادة فرامل')">🛒 أضف إلى العربة</button>
-      </div>
-
-      <div class="product">
-        <img src="images/oil.jpg" alt="Oil Filter" />
+      </a>
+    </div>
+    <div class="product">
+      <a href="product.html?id=oil">
+        <img src="images/oil.jpg" alt="فلتر زيت">
         <h3>فلتر زيت / Filtre à huile</h3>
-        <button onclick="addToCart('فلتر زيت')">🛒 أضف إلى العربة</button>
-      </div>
+      </a>
+    </div>
+  </section>
 
-      <div class="product">
-  <a href="product.html?id=brake">
-    <img src="images/brake.jpg" alt="وسادة فرامل">
-    <h3>وسادة فرامل</h3>
-  </a>
-</div>
+  <section class="signup" id="signup">
+    <h2>إنشاء حساب / Créer un compte</h2>
+    <form>
+      <input type="text" placeholder="الاسم الكامل / Nom complet" required>
+      <input type="email" placeholder="البريد الإلكتروني / Email" required>
+      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
+      <button type="submit">تسجيل / S'inscrire</button>
+    </form>
+  </section>
 
-<div class="product">
-  <a href="product.html?id=oil">
-    <img src="images/oil.jpg" alt="فلتر زيت">
-    <h3>فلتر زيت</h3>
-  </a>
-</div>
+  <section class="login" id="login">
+    <h2>تسجيل الدخول / Connexion</h2>
+    <form>
+      <input type="email" placeholder="البريد الإلكتروني / Email" required>
+      <input type="password" placeholder="كلمة المرور / Mot de passe" required>
+      <button type="submit">دخول / Connexion</button>
+    </form>
+  </section>
 
-    </section>
+  <footer>جميع الحقوق محفوظة &copy; 2025</footer>
 
-    <!-- ✅ العربة -->
-    <section class="cart">
-      <h2>🛒 العربة</h2>
-      <ul id="cart-items"></ul>
-      <p id="empty-cart">لا توجد منتجات في العربة.</p>
-    </section>
-
-    <!-- ✅ إنشاء حساب -->
-    <section class="signup" id="signup">
-      <h2>إنشاء حساب / Créer un compte</h2>
-      <form>
-        <input type="text" placeholder="الاسم الكامل / Nom complet" required />
-        <input type="email" placeholder="البريد الإلكتروني / Email" required />
-        <input type="password" placeholder="كلمة المرور / Mot de passe" required />
-        <button type="submit">تسجيل / S'inscrire</button>
-      </form>
-    </section>
-
-    <!-- ✅ تسجيل الدخول -->
-    <section class="login" id="login">
-      <h2>تسجيل الدخول / Connexion</h2>
-      <form>
-        <input type="email" placeholder="البريد الإلكتروني / Email" required />
-        <input type="password" placeholder="كلمة المرور / Mot de passe" required />
-        <button type="submit">دخول / Connexion</button>
-      </form>
-    </section>
-  </main>
-
-  <!-- ✅ التذييل -->
-  <footer>
-    جميع الحقوق محفوظة &copy; 2025
-  </footer>
-
-  <!-- ✅ سكربت اللغة والعربة -->
   <script>
     function setLang(lang) {
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     }
-
-    const cartItems = [];
-    const cartList = document.getElementById("cart-items");
-    const emptyMsg = document.getElementById("empty-cart");
-
-    function addToCart(productName) {
-      cartItems.push(productName);
-      updateCart();
-    }
-
-    function updateCart() {
-      cartList.innerHTML = "";
-      if (cartItems.length === 0) {
-        emptyMsg.style.display = "block";
-      } else {
-        emptyMsg.style.display = "none";
-        cartItems.forEach(item => {
-          const li = document.createElement("li");
-          li.textContent = item;
-          cartList.appendChild(li);
-        });
-      }
-    }
-
-    updateCart();
   </script>
+
 </body>
 </html>
