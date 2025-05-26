@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
+
   <!-- ✅ رأس الصفحة -->
   <header>
     <div class="logo">🛠️ قطع غيار السيارات</div>
@@ -17,14 +17,13 @@
     </div>
   </header>
 
-  <!-- ✅ قائمة التصفح -->
+  <!-- ✅ قائمة التنقل -->
   <nav>
     <a href="#">الرئيسية / Accueil</a>
     <a href="#signup">تسجيل / S'inscrire</a>
     <a href="#login">دخول / Connexion</a>
   </nav>
 
-  <!-- ✅ القسم الرئيسي للموقع -->
   <main>
     <!-- ✅ بانر ترحيبي -->
     <section class="banner">
@@ -33,23 +32,25 @@
 
     <!-- ✅ قسم المنتجات -->
     <section class="products">
-  <div class="product">
-    <img src="images/brake.jpg" alt="Brake Pad" />
-    <h3>وسادة فرامل / Plaquette de frein</h3>
-    <button onclick="addToCart('وسادة فرامل')">🛒 أضف إلى العربة</button>
-  </div>
-      <section class="cart">
-  <h2>🛒 العربة</h2>
-  <ul id="cart-items"></ul>
-  <p id="empty-cart">لا توجد منتجات في العربة.</p>
-</section>
+      <div class="product">
+        <img src="images/brake.jpg" alt="Brake Pad" />
+        <h3>وسادة فرامل / Plaquette de frein</h3>
+        <button onclick="addToCart('وسادة فرامل')">🛒 أضف إلى العربة</button>
+      </div>
 
-  <div class="product">
-    <img src="images/oil.jpg" alt="Oil Filter" />
-    <h3>فلتر زيت / Filtre à huile</h3>
-    <button onclick="addToCart('فلتر زيت')">🛒 أضف إلى العربة</button>
-  </div>
-</section>
+      <div class="product">
+        <img src="images/oil.jpg" alt="Oil Filter" />
+        <h3>فلتر زيت / Filtre à huile</h3>
+        <button onclick="addToCart('فلتر زيت')">🛒 أضف إلى العربة</button>
+      </div>
+    </section>
+
+    <!-- ✅ العربة -->
+    <section class="cart">
+      <h2>🛒 العربة</h2>
+      <ul id="cart-items"></ul>
+      <p id="empty-cart">لا توجد منتجات في العربة.</p>
+    </section>
 
     <!-- ✅ إنشاء حساب -->
     <section class="signup" id="signup">
@@ -73,44 +74,42 @@
     </section>
   </main>
 
-  <!-- ✅ تذييل الموقع -->
+  <!-- ✅ التذييل -->
   <footer>
     جميع الحقوق محفوظة &copy; 2025
   </footer>
 
-  <!-- ✅ كود التحويل بين اللغتين -->
+  <!-- ✅ سكربت اللغة والعربة -->
   <script>
     function setLang(lang) {
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     }
-  </script>
-  <script>
-  const cartItems = [];
-  const cartList = document.getElementById("cart-items");
-  const emptyMsg = document.getElementById("empty-cart");
 
-  function addToCart(productName) {
-    cartItems.push(productName);
-    updateCart();
-  }
+    const cartItems = [];
+    const cartList = document.getElementById("cart-items");
+    const emptyMsg = document.getElementById("empty-cart");
 
-  function updateCart() {
-    cartList.innerHTML = "";
-    if (cartItems.length === 0) {
-      emptyMsg.style.display = "block";
-    } else {
-      emptyMsg.style.display = "none";
-      cartItems.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        cartList.appendChild(li);
-      });
+    function addToCart(productName) {
+      cartItems.push(productName);
+      updateCart();
     }
-  }
 
-  updateCart(); // للتأكد من عرض الحالة الأولية
-</script>
+    function updateCart() {
+      cartList.innerHTML = "";
+      if (cartItems.length === 0) {
+        emptyMsg.style.display = "block";
+      } else {
+        emptyMsg.style.display = "none";
+        cartItems.forEach(item => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          cartList.appendChild(li);
+        });
+      }
+    }
 
+    updateCart();
+  </script>
 </body>
 </html>
