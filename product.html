@@ -3,56 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>تفاصيل المنتج</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>تفاصيل المنتج - قطع غيار السيارات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    .product-detail {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #1d3557;
+      color: white;
       text-align: center;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .product-detail {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
     .product-detail img {
       max-width: 100%;
       border-radius: 10px;
+      width: 300px;
     }
-    .product-detail h1 {
-      margin-top: 20px;
+    .info {
+      flex: 1;
     }
-    .product-detail p {
-      margin: 10px 0;
+    .info h1 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    .info p {
+      margin-bottom: 1rem;
+      color: #444;
     }
     .price {
-      font-size: 1.5em;
-      color: #e63946;
+      font-size: 1.5rem;
+      color: #2a9d8f;
     }
-    .btn {
-      padding: 10px 20px;
-      background-color: #1d3557;
+    .add-to-cart {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #2a9d8f;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
+    }
+    .add-to-cart:hover {
+      background: #21867a;
+    }
+    @media (max-width: 600px) {
+      .product-detail {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="product-detail">
-    <img id="product-image" src="images/brake.jpg" alt="صورة المنتج">
-    <h1 id="product-name">وسادة فرامل</h1>
-    <p id="product-description">وسادة فرامل عالية الجودة تناسب معظم السيارات الأوروبية. توفر أداءً ممتازًا للفرملة.</p>
-    <p class="price" id="product-price">السعر: 150 درهم</p>
-    <button class="btn" onclick="addToCart()">🛒 أضف إلى العربة</button>
+  <header>
+    🛠️ قطع غيار السيارات
+  </header>
+
+  <div class="container">
+    <div class="product-detail">
+      <img src="images/brake.jpg" alt="وسادة فرامل">
+      <div class="info">
+        <h1>وسادة فرامل / Plaquette de frein</h1>
+        <p>
+          هذه الوسادة توفر أداء كبح ممتاز، مصممة لتناسب معظم أنواع السيارات. 
+          تتميز بجودة تصنيع عالية لتدوم طويلاً وتمنحك قيادة آمنة.
+        </p>
+        <div class="price">150 درهم</div>
+        <button class="add-to-cart">🛒 أضف إلى العربة</button>
+      </div>
+    </div>
   </div>
 
-  <script>
-    // يمكنك تمرير بيانات من الصفحة الرئيسية لاحقًا
-    function addToCart() {
-      alert("تمت إضافة المنتج إلى العربة!");
-    }
-  </script>
+  <footer>
+    جميع الحقوق محفوظة &copy; 2025
+  </footer>
 
 </body>
 </html>
-
