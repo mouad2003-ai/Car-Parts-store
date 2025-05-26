@@ -2,153 +2,168 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🛠️ متجر قطع غيار السيارات - Car Parts Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>قطع غيار السيارات - Car Parts</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    /* التنسيقات كما في السابق */
     body {
       font-family: 'Cairo', sans-serif;
-      margin: 0; padding: 0;
-      background-color: #f7f9fc;
-      color: #222;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
     }
     header, footer {
       background-color: #1d3557;
       color: white;
       text-align: center;
-      padding: 1rem 0;
-      font-weight: 700;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1rem;
+      padding: 1rem;
     }
     .logo {
-      font-size: 1.4rem;
-    }
-    .lang-switch img {
-      width: 32px;
-      height: 21px;
-      margin-left: 8px;
-      cursor: pointer;
-      border-radius: 4px;
-      border: 1px solid transparent;
-      transition: border-color 0.3s ease;
-    }
-    .lang-switch img:hover {
-      border-color: #2a9d8f;
+      font-size: 1.5rem;
+      font-weight: 700;
     }
     nav {
-      background-color: #457b9d;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      background: #457b9d;
       padding: 0.75rem 0;
-      font-weight: 600;
-      font-size: 1rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
     nav a {
       color: white;
       text-decoration: none;
-      transition: color 0.3s ease;
+      font-weight: 600;
     }
     nav a:hover {
-      color: #f4a261;
+      text-decoration: underline;
     }
-    .banner {
-      background: url('images/banner.jpg') no-repeat center center/cover;
-      height: 180px;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.6rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-      margin-bottom: 2rem;
-    }
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0 1rem 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .product {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      width: 280px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      display: flex;
-      flex-direction: column;
+    .lang-switch {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      cursor: pointer;
       user-select: none;
     }
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    .lang-switch img {
+      width: 30px;
+      margin-left: 10px;
+      vertical-align: middle;
+      border-radius: 50%;
+      border: 2px solid transparent;
     }
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
+    .lang-switch img.active {
+      border-color: #2a9d8f;
     }
-    .product-content {
+    /* فلتر السيارة */
+    .filter {
+      max-width: 900px;
+      margin: 1rem auto 2rem auto;
       padding: 1rem;
-      flex-grow: 1;
+      background: #e0f7f1;
+      border-radius: 10px;
+      user-select:none;
+    }
+    .filter h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #1d3557;
+    }
+    .filter form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .filter label {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-    }
-    .product-content h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
       font-weight: 700;
       color: #1d3557;
     }
-    .product-content p {
-      flex-grow: 1;
+    .filter select, .filter button {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .filter button {
+      background: #2a9d8f;
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .filter button:hover {
+      background: #21867a;
+    }
+    /* قسم المنتجات */
+    .products {
+      max-width: 900px;
+      margin: 0 auto 3rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .product {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      max-height: 180px;
+    }
+    .product-content {
+      text-align: center;
+    }
+    .product h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1.25rem;
+      color: #1d3557;
+    }
+    .product p {
       font-size: 0.9rem;
-      line-height: 1.4;
       color: #555;
-      margin-bottom: 1rem;
+      min-height: 80px;
     }
     .price {
+      font-size: 1.3rem;
       font-weight: 700;
-      font-size: 1.2rem;
       color: #2a9d8f;
-      margin-bottom: 0.8rem;
+      margin: 0.75rem 0;
     }
     .add-to-cart {
-      background-color: #2a9d8f;
+      padding: 0.6rem 1.2rem;
+      background: #2a9d8f;
       color: white;
       border: none;
       border-radius: 6px;
-      padding: 0.6rem 1rem;
       cursor: pointer;
       font-weight: 700;
-      font-size: 1rem;
       transition: background-color 0.3s ease;
     }
     .add-to-cart:hover {
-      background-color: #21867a;
+      background: #21867a;
     }
+    /* اقسام التسجيل والدخول */
     section.signup, section.login {
       max-width: 400px;
-      background-color: white;
       margin: 2rem auto;
-      padding: 1.8rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-      user-select: none;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     section.signup h2, section.login h2 {
       text-align: center;
@@ -157,162 +172,289 @@
     }
     form input {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.6rem;
       margin-bottom: 1rem;
       border: 1px solid #ccc;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 1rem;
-      transition: border-color 0.3s ease;
-    }
-    form input:focus {
-      border-color: #2a9d8f;
-      outline: none;
     }
     form button {
       width: 100%;
-      padding: 0.75rem 0;
-      background-color: #2a9d8f;
-      border: none;
-      border-radius: 8px;
+      padding: 0.7rem;
+      background: #2a9d8f;
       color: white;
+      border: none;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 1.1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
     form button:hover {
-      background-color: #21867a;
+      background: #21867a;
     }
-    footer {
-      font-size: 0.9rem;
-      user-select: none;
-    }
-    @media (max-width: 768px) {
+    /* استجابة الموبايل */
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+      }
       .products {
         flex-direction: column;
         align-items: center;
       }
-      nav {
-        flex-direction: column;
-        gap: 1rem;
+      .product {
+        width: 90%;
       }
-      header {
+      .filter form {
         flex-direction: column;
-        gap: 0.5rem;
+        align-items: stretch;
       }
-      .lang-switch img {
-        margin-left: 4px;
+      .filter label {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo">🛠️ قطع غيار السيارات</div>
-    <div class="lang-switch" title="تغيير اللغة / Change Language">
-      <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')" />
-      <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')" />
+<header>
+  <div class="logo">🛠️ قطع غيار السيارات</div>
+  <div class="lang-switch" title="تبديل اللغة">
+    <img src="images/ma.png" alt="العربية" title="العربية" onclick="setLang('ar')" id="lang-ar" class="active" />
+    <img src="images/fr.png" alt="Français" title="Français" onclick="setLang('fr')" id="lang-fr" />
+  </div>
+</header>
+
+<nav>
+  <a href="#">الرئيسية / Accueil</a>
+  <a href="#signup">تسجيل / S'inscrire</a>
+  <a href="#login">دخول / Connexion</a>
+</nav>
+
+<!-- فلتر السيارة -->
+<section class="filter" aria-label="فلتر السيارة">
+  <h3>فلتر السيارة</h3>
+  <form id="carFilterForm" onsubmit="return false;">
+    <label for="yearSelect">السنة:</label>
+    <select id="yearSelect" name="year">
+      <option value="">اختر السنة</option>
+    </select>
+
+    <label for="makeSelect">النوع:</label>
+    <select id="makeSelect" name="make">
+      <option value="">اختر النوع</option>
+      <option value="toyota">تويوتا</option>
+      <option value="honda">هوندا</option>
+      <option value="bmw">بي إم دبليو</option>
+      <option value="ford">فورد</option>
+    </select>
+
+    <label for="modelSelect">الموديل:</label>
+    <select id="modelSelect" name="model" disabled>
+      <option value="">اختر الموديل</option>
+    </select>
+
+    <button type="submit">تطبيق الفلتر</button>
+  </form>
+</section>
+
+<!-- قسم المنتجات -->
+<section class="products" id="products" aria-label="منتجات قطع الغيار">
+  <!-- كل منتج يحتوي على بيانات السيارة التي يناسبها -->
+  <div class="product" 
+       data-make="toyota" 
+       data-models='["كورولا","كامري","راف فور"]' 
+       data-year-min="2010" 
+       data-year-max="2023"
+       data-ar-title="وسادة فرامل"
+       data-fr-title="Plaquette de frein"
+       data-ar-desc="وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال. مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية."
+       data-fr-desc="Les plaquettes de frein assurent un freinage puissant et silencieux. Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable."
+       data-price="150">
+    <img src="images/brake.jpg" alt="وسادة فرامل" />
+    <div class="product-content">
+      <h3>وسادة فرامل / Plaquette de frein</h3>
+      <p>وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال. مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية.<br>Les plaquettes de frein assurent un freinage puissant et silencieux. Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable.</p>
+      <div class="price">150 درهم</div>
+      <button class="add-to-cart">🛒 أضف إلى العربة</button>
     </div>
-  </header>
+  </div>
 
-  <nav>
-    <a href="#">الرئيسية / Accueil</a>
-    <a href="#signup">تسجيل / S'inscrire</a>
-    <a href="#login">دخول / Connexion</a>
-  </nav>
-
-  <div class="banner">مرحباً بكم في متجر قطع الغيار</div>
-
-  <section class="products" id="products">
-    <div class="product" data-ar-title="وسادة فرامل" data-fr-title="Plaquette de frein"
-         data-ar-desc="وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال. مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية."
-         data-fr-desc="Les plaquettes de frein assurent un freinage puissant et silencieux. Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable."
-         data-price="150">
-      <img src="images/brake.jpg" alt="وسادة فرامل" />
-      <div class="product-content">
-        <h3>وسادة فرامل / Plaquette de frein</h3>
-        <p>
-          وسادة الفرامل مصنوعة من مواد عالية الجودة، مصممة لتقليل الضوضاء وتوفير أداء كبح فعّال.
-          مناسبة لجميع أنواع المركبات الخفيفة وتدوم لفترة طويلة تحت الظروف القاسية.<br />
-          Les plaquettes de frein assurent un freinage puissant et silencieux.
-          Fabriquées avec des matériaux résistants à l'usure pour une performance durable et fiable.
-        </p>
-        <div class="price">150 درهم</div>
-        <button class="add-to-cart">🛒 أضف إلى العربة</button>
-      </div>
+  <div class="product" 
+       data-make="honda" 
+       data-models='["سيفيك","أكورد","CR-V"]' 
+       data-year-min="2005" 
+       data-year-max="2025"
+       data-ar-title="فلتر زيت"
+       data-fr-title="Filtre à huile"
+       data-ar-desc="فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل. يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت."
+       data-fr-desc="Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés, aidant à préserver le moteur plus longtemps et en réduisant l'usure. Facile à installer, durable et assure un flux d’huile stable."
+       data-price="80">
+    <img src="images/oil.jpg" alt="فلتر زيت" />
+    <div class="product-content">
+      <h3>فلتر زيت / Filtre à huile</h3>
+      <p>فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل. يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت.<br>Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés, aidant à préserver le moteur plus longtemps et en réduisant l'usure. Facile à installer, durable et assure un flux d’huile stable.</p>
+      <div class="price">80 درهم</div>
+      <button class="add-to-cart">🛒 أضف إلى العربة</button>
     </div>
+  </div>
 
-    <div class="product" data-ar-title="فلتر زيت" data-fr-title="Filtre à huile"
-         data-ar-desc="فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل. يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت."
-         data-fr-desc="Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés, aidant à préserver le moteur plus longtemps et en réduisant l'usure. Facile à installer, durable et assure un flux d’huile stable."
-         data-price="95">
-      <img src="images/oil.jpg" alt="فلتر زيت" />
-      <div class="product-content">
-        <h3>فلتر زيت / Filtre à huile</h3>
-        <p>
-          فلتر الزيت من النوع الممتاز يعمل على تنقية الزيت من الشوائب والرواسب، مما يساعد على الحفاظ على المحرك لأطول فترة ممكنة ويقلل من التآكل.
-          يتميز بسهولة التركيب وعمر طويل ويضمن تدفقًا سلسًا للزيت.<br />
-          Filtre à huile de haute qualité qui purifie l'huile en éliminant les impuretés,
-          aidant à préserver le moteur plus longtemps et en réduisant l'usure.
-          Facile à installer, durable et assure un flux d’huile stable.
-        </p>
-        <div class="price">95 درهم</div>
-        <button class="add-to-cart">🛒 أضف إلى العربة</button>
-      </div>
+  <div class="product" 
+       data-make="bmw" 
+       data-models='["سلسلة 3","سلسلة 5"]' 
+       data-year-min="2012" 
+       data-year-max="2024"
+       data-ar-title="بطارية سيارة"
+       data-fr-title="Batterie de voiture"
+       data-ar-desc="بطارية عالية الأداء لتشغيل محرك السيارة بثبات حتى في الظروف الصعبة. سهلة التركيب وتدوم طويلاً مع ضمان الجودة."
+       data-fr-desc="Batterie haute performance assurant un démarrage stable du moteur, même dans des conditions difficiles. Facile à installer et durable avec garantie qualité."
+       data-price="300">
+    <img src="images/battery.jpg" alt="بطارية سيارة" />
+    <div class="product-content">
+      <h3>بطارية سيارة / Batterie de voiture</h3>
+      <p>بطارية عالية الأداء لتشغيل محرك السيارة بثبات حتى في الظروف الصعبة. سهلة التركيب وتدوم طويلاً مع ضمان الجودة.<br>Batterie haute performance assurant un démarrage stable du moteur, même dans des conditions difficiles. Facile à installer et durable avec garantie qualité.</p>
+      <div class="price">300 درهم</div>
+      <button class="add-to-cart">🛒 أضف إلى العربة</button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="signup" class="signup">
-    <h2>تسجيل حساب جديد</h2>
-    <form>
-      <input type="text" placeholder="الاسم الكامل" required />
-      <input type="email" placeholder="البريد الإلكتروني" required />
-      <input type="password" placeholder="كلمة المرور" required />
-      <button type="submit">تسجيل</button>
-    </form>
-  </section>
+<!-- قسم التسجيل -->
+<section class="signup" id="signup" aria-label="تسجيل مستخدم جديد">
+  <h2>تسجيل مستخدم جديد / S'inscrire</h2>
+  <form>
+    <input type="text" placeholder="الاسم الكامل / Nom complet" required />
+    <input type="email" placeholder="البريد الإلكتروني / Email" required />
+    <input type="password" placeholder="كلمة المرور / Mot de passe" required />
+    <button type="submit">تسجيل</button>
+  </form>
+</section>
 
-  <section id="login" class="login">
-    <h2>تسجيل الدخول</h2>
-    <form>
-      <input type="email" placeholder="البريد الإلكتروني" required />
-      <input type="password" placeholder="كلمة المرور" required />
-      <button type="submit">دخول</button>
-    </form>
-  </section>
+<!-- قسم الدخول -->
+<section class="login" id="login" aria-label="تسجيل الدخول">
+  <h2>تسجيل الدخول / Connexion</h2>
+  <form>
+    <input type="email" placeholder="البريد الإلكتروني / Email" required />
+    <input type="password" placeholder="كلمة المرور / Mot de passe" required />
+    <button type="submit">دخول</button>
+  </form>
+</section>
 
-  <footer>
-    جميع الحقوق محفوظة &copy; 2025 متجر قطع غيار السيارات
-  </footer>
+<footer>
+  جميع الحقوق محفوظة &copy; 2025
+</footer>
 
-  <script>
-    // لا يتم التبديل إلا إذا ضغط المستخدم على العلم
-    function setLang(lang) {
-      if (lang === 'ar') {
-        document.documentElement.lang = 'ar';
-        document.documentElement.dir = 'rtl';
+<script>
+  // ملء قائمة السنة
+  const yearSelect = document.getElementById('yearSelect');
+  for(let y = 2025; y >= 2000; y--) {
+    let option = document.createElement('option');
+    option.value = y;
+    option.textContent = y;
+    yearSelect.appendChild(option);
+  }
 
-        // تحديث محتوى المنتجات للعربية
-        document.querySelectorAll('.product').forEach(prod => {
-          prod.querySelector('h3').textContent = prod.dataset.arTitle + ' / ' + prod.dataset.frTitle;
-          prod.querySelector('p').innerHTML = prod.dataset.arDesc.replace(/\n/g, '<br>') + '<br>' + prod.dataset.frDesc;
-          prod.querySelector('.price').textContent = prod.dataset.price + ' درهم';
-          prod.querySelector('.add-to-cart').textContent = '🛒 أضف إلى العربة';
-        });
-      } else if (lang === 'fr') {
-        document.documentElement.lang = 'fr';
-        document.documentElement.dir = 'ltr';
+  // موديلات لكل نوع
+  const makeSelect = document.getElementById('makeSelect');
+  const modelSelect = document.getElementById('modelSelect');
 
-        // تحديث محتوى المنتجات للفرنسية
-        document.querySelectorAll('.product').forEach(prod => {
-          prod.querySelector('h3').textContent = prod.dataset.frTitle + ' / ' + prod.dataset.arTitle;
-          prod.querySelector('p').innerHTML = prod.dataset.frDesc.replace(/\n/g, '<br>') + '<br>' + prod.dataset.arDesc;
-          prod.querySelector('.price').textContent = prod.dataset.price + ' Dhs';
-          prod.querySelector('.add-to-cart').textContent = '🛒 Ajouter au panier';
-        });
-      }
+  const models = {
+    toyota: ['كورولا', 'كامري', 'راف فور', 'برادو'],
+    honda: ['سيفيك', 'أكورد', 'CR-V', 'بايلوت'],
+    bmw: ['سلسلة 3', 'سلسلة 5', 'X3', 'X5'],
+    ford: ['فوكوس', 'موستانج', 'إكسبلورر', 'رينجر']
+  };
+
+  makeSelect.addEventListener('change', () => {
+    const selectedMake = makeSelect.value;
+    modelSelect.innerHTML = '<option value="">اختر الموديل</option>';
+    if(models[selectedMake]) {
+      models[selectedMake].forEach(mod => {
+        let option = document.createElement('option');
+        option.value = mod;
+        option.textContent = mod;
+        modelSelect.appendChild(option);
+      });
+      modelSelect.disabled = false;
+    } else {
+      modelSelect.disabled = true;
     }
-  </script>
+  });
+
+  // وظيفة الفلترة
+  const products = document.querySelectorAll('.product');
+  const filterForm = document.getElementById('carFilterForm');
+
+  filterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const year = parseInt(yearSelect.value);
+    const make = makeSelect.value;
+    const model = modelSelect.value;
+
+    products.forEach(product => {
+      let show = true;
+
+      // تحقق من النوع
+      if(make && product.dataset.make !== make) {
+        show = false;
+      }
+
+      // تحقق من الموديل
+      if(show && model) {
+        const productModels = JSON.parse(product.dataset.models);
+        if(!productModels.includes(model)) {
+          show = false;
+        }
+      }
+
+      // تحقق من السنة
+      if(show && year) {
+        const minYear = parseInt(product.dataset.yearMin);
+        const maxYear = parseInt(product.dataset.yearMax);
+        if(year < minYear || year > maxYear) {
+          show = false;
+        }
+      }
+
+      product.style.display = show ? 'flex' : 'none';
+    });
+  });
+
+  // لغة (اختياري)
+  const langArBtn = document.getElementById('lang-ar');
+  const langFrBtn = document.getElementById('lang-fr');
+
+  function setLang(lang) {
+    if(lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+
+      products.forEach(product => {
+        product.querySelector('h3').textContent = product.dataset.arTitle;
+        product.querySelector('p').innerHTML = product.dataset.arDesc.replace(/\n/g, '<br>');
+        product.querySelector('.price').textContent = product.dataset.price + ' درهم';
+      });
+
+      langArBtn.classList.add('active');
+      langFrBtn.classList.remove('active');
+    } else if(lang === 'fr') {
+      document.documentElement.lang = 'fr';
+      document.documentElement.dir = 'ltr';
+
+      products.forEach(product => {
+        product.querySelector('h3').textContent = product.dataset.frTitle;
+        product.querySelector('p').innerHTML = product.dataset.frDesc.replace(/\n/g, '<br>');
+        product.querySelector('.price').textContent = product.dataset.price + ' Dhs';
+      });
+
+      langFrBtn.classList.add('active');
+      langArBtn.classList.remove('active');
+    }
+  }
+
+  // تعيين اللغة الافتراضية للعربية
+  setLang('ar');
+</script>
+
 </body>
 </html>
