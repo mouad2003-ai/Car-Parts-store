@@ -12,6 +12,8 @@
       --accent-color: #a8dadc;
       --text-color: #333;
       --bg-color: #f9f9f9;
+      --danger-color: #e63946;
+      --success-color: #2a9d8f;
     }
 
     * {
@@ -34,6 +36,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -52,6 +55,7 @@
       justify-content: center;
       gap: 2rem;
       padding: 0.75rem;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -61,10 +65,11 @@
     }
 
     .banner {
-      background-color: var(--accent-color);
+      background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
       text-align: center;
       padding: 2rem;
       font-size: 1.3rem;
+      color: #fff;
     }
 
     .products {
@@ -83,6 +88,7 @@
       width: 270px;
       transition: transform 0.3s ease;
       text-align: center;
+      position: relative;
     }
 
     .product:hover {
@@ -98,6 +104,21 @@
     .product h3 {
       padding: 1rem;
       font-size: 1.1rem;
+    }
+
+    .add-to-cart {
+      background: var(--success-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .add-to-cart:hover {
+      background: #21867a;
     }
 
     section.signup, section.login {
@@ -144,6 +165,7 @@
       color: white;
       text-align: center;
       padding: 1rem;
+      margin-top: 2rem;
     }
 
     @media (max-width: 768px) {
@@ -183,6 +205,7 @@
         <img src="images/brake.jpg" alt="وسادة فرامل">
         <h3>وسادة فرامل / Plaquette de frein</h3>
       </a>
+      <button class="add-to-cart">🛒 أضف إلى العربة</button>
     </div>
 
     <div class="product">
@@ -190,6 +213,7 @@
         <img src="images/oil.jpg" alt="فلتر زيت">
         <h3>فلتر زيت / Filtre à huile</h3>
       </a>
+      <button class="add-to-cart">🛒 أضف إلى العربة</button>
     </div>
   </section>
 
